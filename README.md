@@ -1,26 +1,26 @@
 # AgentsVille AI Travel Planning Agent
 
-This is my cleaned-up portfolio version of an AI travel-planning agent project. The original version came from a guided notebook assignment, but I refactored the presentation here to emphasize the AI engineering ideas behind the work: structured outputs, tool design, mocked APIs, eval gates, and ReAct-style itinerary revision.
+AgentsVille is a portfolio adaptation of an AI travel-planning agent project. It demonstrates how to structure an LLM workflow around typed schemas, tool use, mocked external data, evaluation gates, and ReAct-style itinerary revision.
 
-I am intentionally treating this repository as a portfolio case study, not as a polished commercial travel product. The value is in the engineering pattern: taking an LLM workflow that could easily become loose prompt soup and making it more testable, inspectable, and maintainable.
+The original version began as a guided notebook assignment. This public version has been cleaned up to focus on the AI engineering patterns behind the work rather than the assignment scaffolding. The goal is to show how an LLM workflow can be made more testable, inspectable, and maintainable.
 
-## What I wanted to demonstrate
+## What this project demonstrates
 
 - **Schema-first LLM development**: using Pydantic models so generated itineraries can be parsed and validated instead of trusted as free-form text.
 - **Grounded generation**: building the itinerary from traveler preferences, destination data, mocked weather, and mocked activity records.
 - **LLM-as-judge evaluation**: checking whether activities are compatible with weather using constrained output labels.
 - **Tool-use design**: writing clear Python docstrings that double as tool descriptions for an agent.
-- **ReAct-style revision**: forcing the revision agent through a THINK -> ACTION -> OBSERVATION loop instead of letting it jump straight to a final answer.
+- **ReAct-style revision**: guiding the revision agent through a THINK -> ACTION -> OBSERVATION loop instead of letting it jump straight to a final answer.
 - **Eval-gated final output**: requiring the agent to run validation before calling the final-answer tool.
 - **Secret hygiene**: removing the course-issued API key from the public notebook and reading model-provider settings from environment variables.
 
 ## What this repo is and is not
 
-This repo is a **portfolio adaptation** of the project. It keeps the most important engineering artifacts visible and readable.
+This repo is a **portfolio-focused version** of the project. It keeps the most important engineering artifacts visible and readable for users who want to understand the architecture.
 
-It is **not** a full production travel-planning app. The activity and weather APIs are mocked, and the notebook is meant to demonstrate agent architecture rather than provide real travel recommendations.
+It is **not** a production travel-planning app. The activity and weather APIs are mocked, and the notebook is meant to demonstrate agent design rather than provide real travel recommendations.
 
-It is also not a verbatim copy of the original course submission. Some assignment-specific scaffolding, run outputs, and course-only credentials were intentionally removed so the public version is easier to review.
+It is also not a verbatim copy of the original course submission. Some assignment-specific scaffolding, run outputs, and course-only credentials were intentionally removed so the public version is easier to inspect, run, and reuse.
 
 ## Project structure
 
@@ -122,7 +122,7 @@ jupyter notebook agentsville_ai_travel_planning.ipynb
 
 ## Running with Docker
 
-Docker is optional, but it makes the notebook easier to run consistently because reviewers do not need to manage a local Python or Jupyter setup.
+Docker is optional, but it makes the notebook easier to run consistently because users do not need to manage a local Python or Jupyter setup.
 
 Build the image:
 
@@ -144,6 +144,6 @@ No real credential is committed to this repository. The notebook reads provider 
 
 ## Reflection
 
-The most important lesson from this project was that agentic AI work needs more than a clever prompt. The maintainable version comes from putting guardrails around the model: typed schemas, narrow tool contracts, exact output formats, and evals that decide whether an answer is acceptable.
+The main lesson from this project is that agentic AI work needs more than a clever prompt. The maintainable version comes from putting guardrails around the model: typed schemas, narrow tool contracts, exact output formats, and evals that decide whether an answer is acceptable.
 
-That is the part I want this repo to communicate: I can build AI workflows that are structured enough for software engineering, not just demos that work once in a notebook.
+This is the engineering mindset I want this project to show: building AI workflows that are structured enough to maintain, test, and extend beyond a one-off notebook demo.
